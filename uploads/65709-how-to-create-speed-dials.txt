@@ -1,0 +1,22 @@
+
+
+***********************************************
+*1: Press PROG button (PROG-displayed on the LCD) then | enter ** (double asterix) then | enter value 1234 (Password)
+*2: Enter value 001 then | press ENTER button (ENTER-displayed on the LCD).
+*3: Type LOCATION number (our speed dial eg 100) | If you get to that location, then on the right side must show a corresponding number eg Location 100: 0772 166138
+*if there is no number then that's when you provide one by doing the following:
+*
+*4: Enter prefix 0 (ALWAYS 0 PREFIX) then number eg cell number
+*	EXAMPLE 00772166138 ................THEN
+*5: Press ENTER (PHYSICAL BUTTON)
+*6: Press CANCEL (PHYSICAL BUTTON)
+*7: Provide NEXT location.
+*
+*****************************************************************************************
+										*********
+									*****************		*****************
+								*****************************************************************
+								*								*
+								*								*
+								*****************************************************************
+									*************************************************

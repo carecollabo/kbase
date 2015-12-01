@@ -1,0 +1,17 @@
+DB_NAME: a5201152_surv
+USERNAME: a5201152_care
+pass: locked
+mysql4.000webhost.com
+
+$mysql_host = "mysql4.000webhost.com";
+$mysql_database = "a5201152_surv";
+$mysql_user = "a5201152_care";
+$mysql_password = "locked89";
+
+body {
+    background-image: url("paper.gif");
+}
+
+carezimsurvey.hostzi.com
+a7302592
+locked89

@@ -1,0 +1,44 @@
+PASS
+MasIT01......trust4share......192.168.1.101
+MasIT03......trust4share						***********SPEED DIALS**********
+MasIT04......								Joseph Shupiko.......**133
+MasIT05......trust4share
+TRENDNet.....
+MasIT06......192.168.1.104
+MasIT02......192.168.1.102
+
+HP Pro Dom Cntrlr:..............1.09 this is where carezim,carezimbabwe.org is located
+DNS (AD):.......................1.12
+hphost:.........................1.10
+HP Pro:.........................1.11
+virtual yep:....................1.13
+EXCHANGE MAILSVR................196.10.0.41
+DELL............................SCALA
+F DRIVE (***FINANCE***).........196.10.0.195
+KMLSVR..........................1.15
+
+WEB MAIL - https://vcaremailsvr/owa		 196.10.0.41   vcaremailsvr
+		 webmail.carezimbabwe.org/owa
+
+O.O.STOCK
+==================
+1: UPS (lets jus say).
+2: Mice.
+
+VANHU
+==========================
+*****FS***********************DRIVER**************************DISTRICT****
+Shingirai Saruchera	| CHIMUKA (KWESHA)	 	| Zaka
+Nyararai  Mpofu		| Wellington, Ben, Oliver	| Chivi
+Edson 	  Manake	| 				| Bikita
+			| Phillip			| Shurugwi
+
+airtime (Dongles).....Inoiswa na Mother Matinetsa 
+
+***************************************************************Service Providers
+Bikita..................TELONE (262491)
+
+
+
+
+

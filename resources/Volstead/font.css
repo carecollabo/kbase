@@ -1,0 +1,14 @@
+@font-face {
+	font-family: 'Volstead';
+	src: url('./Volstead.eot');
+	src: local('Volstead'), url('./Volstead.woff') format('woff'), url('./Volstead.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_50908">Text with this font applied</p> */
+.fontsforweb_fontid_50908 {
+	font-family: 'Volstead' !important;
+	font-size:49px;
+	color:#fff;
+	text-align:center;
+}
+
+/* Font downloaded from FontsForWeb.com */
