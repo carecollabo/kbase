@@ -24,7 +24,7 @@ if (!isset($username)){
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.php">Home</a></li>
                         <li><a href="#">Library</a></li>
-                        <li><a href="#">Info & Support</a></li> 
+                        <li><a href="infonsupport.php">Info & Support</a></li>
                         <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Actions <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="newpost.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;New Universal Post</a></li>

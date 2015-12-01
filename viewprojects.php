@@ -49,7 +49,7 @@ $rowcnt = mysqli_num_rows($rezo);*/
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="#">Library</a></li>
-                        <li><a href="#">Info & Support</a></li> 
+                        <li><a href="infonsupport.php">Info & Support</a></li>
                         <li class="active"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Actions <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="newpost.php"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;New Universal Post</a></li>
