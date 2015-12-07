@@ -41,7 +41,7 @@ if (!isset($username)){
                 <div>
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="#">Library</a></li>
+                        <li><a href="library.php">Library</a></li>
                         <li><a href="infonsupport.php">Info & Support</a></li>
                         <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Actions <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">

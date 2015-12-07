@@ -97,47 +97,53 @@ include('dbconfig.php');
                         <div class="span12 table-responsive" id="uzers">
                             <table border="0px" class="table">
                                 <?php
-                                $sql="SELECT * FROM post";
-                                $result_set=mysqli_query($mysqli,$sql);
-                                //..................................... getting the user's firstname and surname below......
-                                $searchuser="SELECT firstname,surname FROM user WHERE username='$username'";
-                                $user_result=mysqli_query($mysqli,$searchuser);                                    
-                                while ( $db_field = $user_result->fetch_assoc() ) {
-                                    $firstname = $db_field['firstname'];
-                                    $surname = $db_field['surname'];
-                                }
-                                //..................................... THE CODE ENDS HERE .................................
-                                while($row=mysqli_fetch_array($result_set))
-                                {
+                                if (isset($_GET['id'])){
+                                    $id = $_GET['id'];
+                                    $sql="SELECT * FROM post WHERE id=$id";
+                                    $result_set=mysqli_query($mysqli,$sql);
+                                    
+                    //..................................... getting the user's firstname and surname below......
+                                    $searchuser="SELECT firstname,surname FROM user WHERE username='$username'";
+                                    $user_result=mysqli_query($mysqli,$searchuser);                                    
+                                    while ( $db_field = $user_result->fetch_assoc() ) {
+                                        $firstname = $db_field['firstname'];
+                                        $surname = $db_field['surname'];
+                                    }
+                    //..................................... THE CODE ENDS HERE .................................                
+                                    while($row=mysqli_fetch_array($result_set))
+                                    {
                                 ?>
                                 <tbody class="list">
-                                <tr>
-                                    <td class="cat">
-                                        <img src="resources/user-avatar.png" width="60px" height="60px">&nbsp;
-                                        <center>
-                <span style="font-size:12px;"><?php echo $row['post_by']; ?></span><br><span style="font-size:9px;"><?php echo $row['post_date'];?></span>
-                                        </center>
-                                    </td>
-                                    <td class="title">
-                                       <p>&nbsp;</p>
-                                        <p class="fontsforweb_fontid_494" style="color:#525C65;font-weight:bold;font-size:25px;margin-left:8px;">
-                                            <?php echo $row['title'];?><span style="font-size:16px;"> ( <?php echo $row['post_category'];?> )</span>
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;&nbsp;
-                                    </td>
-                                    <td class="content">
-                                        <p style="margin-left:8px;text-align:justify;margin-right:8px;font-size:12px;">
-                                            <?php echo $row['content']; ?>.....<b>by <?php echo $firstname." ".$surname;?></b>  
-                                       </p>
-                                    </td>
-                                </tr>
-                                <?php
-                                }  ?>
-                                </tbody>
+                                    <tr>
+                                        <td class="cat">
+                                            <img src="resources/user-avatar.png" width="60px" height="60px">&nbsp;
+                                            <center>
+                                                <span style="font-size:12px;"><?php echo $row['post_by']; ?></span><br><span style="font-size:9px;"><?php echo $row['post_date'];?></span>
+                                            </center>
+                                        </td>
+                                        <td class="title">
+                                            <p>&nbsp;</p>
+                                            <p class="fontsforweb_fontid_494" style="color:#525C65;font-weight:bold;font-size:30px;margin-left:8px;">
+                                                <?php echo $row['title'];?><span style="font-size:16px;"> ( <?php echo $row['post_category'];?> )</span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;&nbsp;
+                                        </td>
+                                        <td class="content">
+                                            <p style="margin-left:8px;text-align:justify;margin-right:8px;font-size:12px;">
+                                                <?php echo $row['content']; ?>.....<b>by <?php echo $firstname." ".$surname;?></b>  
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    }  ?>
+                                </tbody><?php
+                                }else{
+                                    echo "<b>Post not available: SORRY :(</b>";
+                                } ?>                              
                             </table>
                             <script src="bower_components/list.js/dist/list.min.js"></script>
                             <script>
@@ -148,44 +154,44 @@ include('dbconfig.php');
                             </script>
                         </div>
                     </div>
-<!--++++++++++++++++++++++++++++++++++++++++++++++++++++LINK SIDE BAR CODE PANO APA+++++++++++++++++++++++++++++-->
+                    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++LINK SIDE BAR CODE PANO APA+++++++++++++++++++++++++++++-->
                     <div class="col-sm-2" id="links">
-                       <table>
-                        <div style="float:right; margin-bottom:2px;">
-                            <input class="search form-control" placeholder="Quick Search"/>
-                        </div><br><br><br>
-                        <?php
-                        $sql2="SELECT * FROM post";
-                        $result_set2=mysqli_query($mysqli,$sql2);
-                        while($row2=mysqli_fetch_array($result_set2))
-                        {
-                        ?>
-                        <tbody class="list">
-                            <tr>
-                                <td class="linktitle">
-                                  
-                                           <p class="fontsforweb_fontid_494" style="color:#03A89E;font-weight:bold;font-size:17px;margin-left:-2px;">
-                                               <a href="explodepost.php?id=<?php echo $row2['id'];?>">
-                                                <?php echo $row2['title'];?><span style="font-size:15px;"> - <?php echo $row2['post_category'];?></span>
-                                               </a>    
-                                           </p> 
-                                        
-                                </td>
-                                <td class="titleby" style="font-size:2px;color:#fff;"><!--++++++++++( WHITE COLOR TO HIDE IT )++++-->
-                                    <?php echo $row2['post_by'];?>
-                                </td>
-                            </tr>
+                        <table>
+                            <div style="float:right; margin-bottom:2px;">
+                                <input class="search form-control" placeholder="Quick Search"/>
+                            </div><br><br><br>
                             <?php
-                        }  ?>
-                        </tbody>
+                            $sql2="SELECT * FROM post";
+                            $result_set2=mysqli_query($mysqli,$sql2);
+                            while($row2=mysqli_fetch_array($result_set2))
+                            {
+                            ?>
+                            <tbody class="list">
+                                <tr>
+                                    <td class="linktitle">
+
+                                        <p class="fontsforweb_fontid_494" style="color:#03A89E;font-weight:bold;font-size:17px;margin-left:-2px;">
+                                            <a href="">
+                                                <?php echo $row2['title'];?><span style="font-size:15px;"> - <?php echo $row2['post_category'];?></span>
+                                            </a>    
+                                        </p> 
+
+                                    </td>
+                                    <td class="titleby" style="font-size:2px;color:#fff;"><!--++++++++++( WHITE COLOR TO HIDE IT )++++-->
+                                        <?php echo $row2['post_by'];?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }  ?>
+                            </tbody>
                         </table>
-                    <script src="bower_components/list.js/dist/list.min.js"></script>
-                    <script>
-                        var options = {
-                            valueNames: [ 'linktitle','titleby']
-                        };
-                        var userList = new List('links', options);
-                    </script>
+                        <script src="bower_components/list.js/dist/list.min.js"></script>
+                        <script>
+                            var options = {
+                                valueNames: [ 'linktitle','titleby']
+                            };
+                            var userList = new List('links', options);
+                        </script>
                     </div>
                 </div>
             </div>

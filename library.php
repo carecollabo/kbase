@@ -46,8 +46,8 @@ include('dbconfig.php');
                 <div>
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="library.php">Library</a></li>
-                        <li class="active"><a href="infonsupport.php">Info & Support</a></li>
+                        <li class="active"><a href="library.php">Library</a></li>
+                        <li><a href="infonsupport.php">Info & Support</a></li>
                         <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Actions <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="newpost.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;New Universal Post</a></li>
@@ -95,9 +95,9 @@ include('dbconfig.php');
                     <div class="col-sm-1"></div>
                     <div class="col-sm-9">
                         <div class="span12 table-responsive" id="uzers">
-                            <table border="0px" class="table">
+                            <table border="0px" class="table" style="font-size:12px;">
                                 <?php
-                                $sql="SELECT * FROM post";
+                                $sql="SELECT * FROM upload";
                                 $result_set=mysqli_query($mysqli,$sql);
                                 //..................................... getting the user's firstname and surname below......
                                 $searchuser="SELECT firstname,surname FROM user WHERE username='$username'";
@@ -111,31 +111,48 @@ include('dbconfig.php');
                                 {
                                 ?>
                                 <tbody class="list">
-                                <tr>
-                                    <td class="cat">
-                                        <img src="resources/user-avatar.png" width="60px" height="60px">&nbsp;
-                                        <center>
-                <span style="font-size:12px;"><?php echo $row['post_by']; ?></span><br><span style="font-size:9px;"><?php echo $row['post_date'];?></span>
-                                        </center>
-                                    </td>
-                                    <td class="title">
-                                       <p>&nbsp;</p>
-                                        <p class="fontsforweb_fontid_494" style="color:#525C65;font-weight:bold;font-size:25px;margin-left:8px;">
-                                            <?php echo $row['title'];?><span style="font-size:16px;"> ( <?php echo $row['post_category'];?> )</span>
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;&nbsp;
-                                    </td>
-                                    <td class="content">
-                                        <p style="margin-left:8px;text-align:justify;margin-right:8px;font-size:12px;">
-                                            <?php echo $row['content']; ?>.....<b>by <?php echo $firstname." ".$surname;?></b>  
-                                       </p>
-                                    </td>
-                                </tr>
-                                <?php
+                                    <tr>
+                                        <td class="cat">
+                                            <img src="resources/user-avatar.png" width="60px" height="60px"><br>
+        <span style="font-size:12px;"><?php echo $row['upload_by']; ?></span><br><span style="font-size:9px;"><?php echo $row['upload_date'];?></span>   
+                                        </td>
+                                        <td>
+                                            <table border="1px" class="table">
+                                                <tr>
+                                                    <td>File:</td>
+                                                    <td>
+                                                        <?php $actualname = substr_replace($row['file'],"",0,6); echo $actualname;?><span style="font-size:10px;"> ( <?php echo $row['upload_category'];?> )</span>                                                
+                                                        <div class="pull-right">
+<a title="Download file" style="font-size:12px;border-radius:45px;" href="download.php?id=<?php echo $row['id'];?>">
+                                                                <i class="glyphicon glyphicon-download-alt"></i>                                            
+</a>
+<a title="View File" style="font-size:12px;border-radius:45px;" href="uploads/<?php echo $row['file'];?>" target="_blank">
+    <i class="glyphicon glyphicon-chevron-right"></i>
+</a>
+                                                        </div>
+                                                    </td> 
+                                                </tr>
+                                                <tr>
+                                                    <td>Description:</td>
+                                                    <td><?php echo "Type: ".$row['type'] ." - upload by: ".$firstname." ".$surname;?></td>   
+                                                </tr>
+                                                <tr>
+                                                    <td>Size:</td>
+                                                    <td><?php echo $row['size']."kb";?></td>      
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>
+                                                    <div class="pull-right">
+<a title="View File" style="font-size:12px;border-radius:45px;" href="uploads/<?php echo $row['file'];?>" target="_blank" class="btn btn-default">view</a>
+<a title="Download file" style="font-size:12px;border-radius:45px;" href="download.php?id=<?php echo $row['id'];?>" class="btn btn-default">download</a>    
+                                                    </div>
+                                                    </td>   
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <?php
                                 }  ?>
                                 </tbody>
                             </table>
@@ -148,44 +165,42 @@ include('dbconfig.php');
                             </script>
                         </div>
                     </div>
-<!--++++++++++++++++++++++++++++++++++++++++++++++++++++LINK SIDE BAR CODE PANO APA+++++++++++++++++++++++++++++-->
+                    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++LINK SIDE BAR CODE PANO APA+++++++++++++++++++++++++++++-->
                     <div class="col-sm-2" id="links">
-                       <table>
-                        <div style="float:right; margin-bottom:2px;">
-                            <input class="search form-control" placeholder="Quick Search"/>
-                        </div><br><br><br>
-                        <?php
-                        $sql2="SELECT * FROM post";
-                        $result_set2=mysqli_query($mysqli,$sql2);
-                        while($row2=mysqli_fetch_array($result_set2))
-                        {
-                        ?>
-                        <tbody class="list">
-                            <tr>
-                                <td class="linktitle">
-                                  
-                                           <p class="fontsforweb_fontid_494" style="color:#03A89E;font-weight:bold;font-size:17px;margin-left:-2px;">
-                                               <a href="explodepost.php?id=<?php echo $row2['id'];?>">
-                                                <?php echo $row2['title'];?><span style="font-size:15px;"> - <?php echo $row2['post_category'];?></span>
-                                               </a>    
-                                           </p> 
-                                        
-                                </td>
-                                <td class="titleby" style="font-size:2px;color:#fff;"><!--++++++++++( WHITE COLOR TO HIDE IT )++++-->
-                                    <?php echo $row2['post_by'];?>
-                                </td>
-                            </tr>
+                        <table>
+                            <div style="float:right; margin-bottom:2px;">
+                                <form>
+                                    <input type="text" class="search form-control" placeholder="Quick Search" id="search"/>
+                                </form>
+                            </div><br><br><br>
                             <?php
-                        }  ?>
-                        </tbody>
+                            $sql2="SELECT * FROM upload";
+                            $result_set2=mysqli_query($mysqli,$sql2);
+                            while($row2=mysqli_fetch_array($result_set2))
+                            {
+                            ?>
+                            <tbody class="list">
+                                <tr>
+                                    <td class="linktitle">
+                                        <p class="fontsforweb_fontid_494" style="color:#03A89E;font-weight:bold;font-size:17px;margin-left:-2px;">
+                                            <a href="explodepost.php?id=<?php echo $row2['id'];?>">
+<?php $actualname = substr_replace($row2['file'],"",0,6); echo $actualname;?><span style="font-size:15px;"> - <?php echo $row2['upload_category'];?></span>
+                                            </a>    
+                                        </p> 
+
+                                    </td>
+                                    <td class="titleby" style="font-size:2px;color:#fff;"><!--++++++++++( WHITE COLOR TO HIDE IT )++++-->
+                                        <?php echo $row2['upload_by'];?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }  ?>
+                            </tbody>
                         </table>
-                    <script src="bower_components/list.js/dist/list.min.js"></script>
-                    <script>
-                        var options = {
-                            valueNames: [ 'linktitle','titleby']
-                        };
-                        var userList = new List('links', options);
-                    </script>
+                        <script type="text/javascript" src="resources/quicksearch/jquery.quicksearch.js"></script>
+                        <script type="text/javascript">
+                            $('input#search').quicksearch('table tbody tr');
+                        </script>
                     </div>
                 </div>
             </div>
