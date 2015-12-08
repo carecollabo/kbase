@@ -32,7 +32,7 @@ include('dbconfig.php');
                                            $('#allcats').paging({limit:8}); });            
         </script>
         <style>
-            body { background: url('resources/esce.png'); }
+            /*body { background: url('resources/esce.png'); }
             /* .container { background: ; }
         </style>
     </head>
@@ -59,12 +59,14 @@ include('dbconfig.php');
                                 <li><a href="newproject.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Project</a></li>
                             </ul>
                         </li>
+                        <?php if($rrol =='Admin') { ?>
                         <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Users <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="viewusers.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;System Users</a></li>
                                 <li><a href="newuser.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add User</a></li>
                             </ul>
                         </li> 
+                        <?php }?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -174,9 +176,15 @@ include('dbconfig.php');
                                         </tr>
                                         <tr>
                                             <td>
+                                                <?php if($rrol =='Admin') { ?>
                                                 <center style="margin-top:8px;">
                                                     <a href="viewposts.php">Other Materials</a>
                                                 </center>
+                                                <?php }else{?>
+                                                <center style="margin-top:8px;">
+                                                    <a href="infonsupport.php">Other Posts</a>
+                                                </center>
+                                                <?php }?>
                                             </td>
                                             <td>
                                                 <button type="submit" name="btn-post" class="btn btn-primary btn-block">Post</button>

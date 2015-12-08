@@ -52,12 +52,14 @@ include('dbconfig.php');
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="newpost.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;New Universal Post</a></li>
                                 <li><a href="upload.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;New Post + Upload</a></li>
+                                <?php if($rrol =='Admin') { ?>
                                 <li class="divider"></li>
                                 <li><a href="viewcategories.php"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Upload Categories</a></li>    
                                 <li><a href="newcategory.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Category</a></li>
                                 <li class="divider"></li>
                                 <li><a href="viewprojects.php"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Manage Projects</a></li>           
                                 <li><a href="newproject.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Project</a></li>
+                                <?php }?>
                             </ul>
                         </li>
                         <?php if($rrol =='Admin') { ?>
@@ -101,41 +103,41 @@ include('dbconfig.php');
                             </div><br><br> 
                             <thead>
                                 <tr>       
-                                    <th>File Name</th>
-                                    <th>Upload by</th>
-                                    <th>Subject</th>
+                                    <th>Title</th>
+                                    <th>Content <i style="font-size:9px;">click the dots</i></th>
+                                    <th>Post by</th>
                                     <th>View Level</th>
-                                    <th>File Size(KB)</th>
-                                    <th>Upload Date</th>
-                                    <th>Status</th>
-                                    <th colspan="2"><center>Action</center></th>	
+                                    <th>Post Date</th>
+                                    <th>Action</th>	
                                 </tr>
                             </thead>
                             <tbody class="list">
                                 <?php 
-                                $sql="SELECT * FROM upload";
+                                $sql="SELECT * FROM post";
                                 $result_set=mysqli_query($mysqli,$sql);
                                 while($row=mysqli_fetch_array($result_set))
                                 {
                                 ?>
                                 <tr>
-                                    <td class="title"><?php $actualname = substr_replace($row['file'],"",0,6); echo $actualname; ?></td>
-                                    <td class="cat"><?php echo $row['upload_by'] ?></td>
-                                    <td class="sub"><?php echo $row['upload_category'] ?></td>
-                                    <td class="vl"><?php echo $row['view_level'] ?></td>
-                                    <td><?php echo $row['size'] ?></td>
-                                    <td class="det"><?php echo $row['upload_date'] ?></td>
-                                    <td><?php echo $row['status'] ?></td>
-                                    <td>
-                                        <a title="View File"href="uploads/<?php echo $row['file'] ?>" target="_blank" class="">
-                                            <i class="glyphicon glyphicon-eye-open"></i>
-                                        </a>
+                                    <td class="title"><?php echo $row['title'];?></td>
+                                    <td class="cat">
+                                        <?php 
+                                            $str = $row['content']; 
+                                            $arr = explode(" ", str_replace(",", ", ", $str));
+                                            for ($index = 0; $index < 15; $index++) {
+                                                echo $arr[$index]. " ";
+                                            }
+                                    echo '<a title="View Post" href="explodepost.php?id='.$row['id'].'"> <b>....</b></a>';
+                                        ?>                                        
                                     </td>
+                                    <td class="sub"><?php echo $row['post_by'] ?></td>
+                                    <td class="vl"><?php echo $row['view_level'] ?></td>
+                                    <td class="det"><?php echo $row['post_date'] ?></td>
                                     <?php if($rrol =='Admin') { ?>
                                     <td> 
-                                <a title="Delete File" style="color:red;" class="" href="delmaterial.php?file=<?php echo $row['file'];?>">
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                </a>
+                                        <a title="Delete Post" style="color:red;" class="" href="delmaterial.php?id=<?php echo $row['id'];?>">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                                        </a>
                                     </td>
                                     <?php }?>
                                 </tr>

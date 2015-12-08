@@ -57,7 +57,7 @@ session_start();
                             $_SESSION['permission']= $db_field['role'];
                         }
                         //..........................the above section grabs user PERMISSION AND account status to display RIGHTFUL PAGES.
-                        if ($_SESSION['stetas']=='Disabled'){
+                        if ($_SESSION['status']=='Disabled'){
                             header("location:passwordchange.php");
                         }else{
                             header("location:index.php");

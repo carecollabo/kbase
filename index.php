@@ -29,20 +29,24 @@ if (!isset($username)){
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="newpost.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;New Universal Post</a></li>
                                 <li><a href="upload.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;New Post + Upload</a></li>
+                                <?php if($rrol =='Admin') { ?>
                                 <li class="divider"></li>
                                 <li><a href="viewcategories.php"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Upload Categories</a></li>    
                                 <li><a href="newcategory.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Category</a></li>
                                 <li class="divider"></li>
                                 <li><a href="viewprojects.php"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Manage Projects</a></li>           
                                 <li><a href="newproject.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Project</a></li>
+                                <?php }?>
                             </ul>
                         </li>
+                        <?php if($rrol =='Admin') { ?>
                         <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Users <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="viewusers.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;System Users</a></li>
                                 <li><a href="newuser.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add User</a></li>
                             </ul>
                         </li> 
+                        <?php }?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">

@@ -60,12 +60,14 @@ include('dbconfig.php');
                                 <li><a href="newproject.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Project</a></li>
                             </ul>
                         </li>
+                        <?php if($rrol =='Admin') { ?>
                         <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Users <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="viewusers.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;System Users</a></li>
                                 <li><a href="newuser.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add User</a></li>
                             </ul>
                         </li>
+                        <?php }?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -155,7 +157,7 @@ include('dbconfig.php');
                         </div>
                     </div>
                     <!--++++++++++++++++++++++++++++++++++++++++++++++++++++LINK SIDE BAR CODE PANO APA+++++++++++++++++++++++++++++-->
-                    <div class="col-sm-2" id="links">
+                    <div class="col-sm-2" id="links" style="background-color:#F8F8F8;border-radius:9px;">
                         <table>
                             <div style="float:right; margin-bottom:2px;">
                                 <input class="search form-control" placeholder="Quick Search"/>
@@ -170,9 +172,9 @@ include('dbconfig.php');
                                 <tr>
                                     <td class="linktitle">
 
-                                        <p class="fontsforweb_fontid_494" style="color:#03A89E;font-weight:bold;font-size:17px;margin-left:-2px;">
-                                            <a href="">
-                                                <?php echo $row2['title'];?><span style="font-size:15px;"> - <?php echo $row2['post_category'];?></span>
+                                        <p style="color:#03A89E;font-size:12px;margin-left:-2px;">
+                                            <a href="explodepost.php?id=<?php echo $row2['id'];?>">
+                                                <?php echo $row2['title'];?><span style="font-size:12px;"> - <?php echo $row2['post_category'];?></span>
                                             </a>    
                                         </p> 
 

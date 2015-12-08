@@ -35,7 +35,7 @@ $rowcnt = mysqli_num_rows($rezo);*/
                                            $('#allcats').paging({limit:8}); });            
         </script>
         <style>
-            body { background: url('resources/esce.png');}
+            /*body { background: url('resources/esce.png');}
             /* .container { background: ; }
         </style>
     </head>
@@ -62,12 +62,14 @@ $rowcnt = mysqli_num_rows($rezo);*/
                                 <li><a href="newproject.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Project</a></li>
                             </ul>
                         </li>
+                        <?php if($rrol =='Admin') { ?>
                         <li><a data-toggle="dropdown" class="dropdown-toggle" href="#">Users <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="viewusers.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;System Users</a></li>
                                 <li><a href="newuser.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add User</a></li>
                             </ul>
-                        </li> 
+                        </li>
+                        <?php }?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -103,7 +105,8 @@ $rowcnt = mysqli_num_rows($rezo);*/
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Manage</a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            <span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Manage</a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse in">

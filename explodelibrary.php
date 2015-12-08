@@ -67,7 +67,7 @@ include('dbconfig.php');
                                 <li><a href="newuser.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add User</a></li>
                             </ul>
                         </li>
-                        <?php }?>
+                        <?php } ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -87,7 +87,7 @@ include('dbconfig.php');
         </nav><!--+++++++++++++++++++++++++++++++++++++++++++++++++END OF THE NAVIGATION BAR+++++++++++++++++++++++++++++++++++++ -->
         <div class="container">
             <div class="container" style="margin-top:70px;">
-                <p class="fontsforweb_fontid_494">Current <strong> Posts</strong></p>
+                <p class="fontsforweb_fontid_494">Selected <strong> Post</strong></p>
                 <hr style="margin-top:-11px;margin-left:-1%;margin-right:2%;">
             </div>
         </div>
@@ -97,64 +97,44 @@ include('dbconfig.php');
                     <div class="col-sm-1"></div>
                     <div class="col-sm-9">
                         <div class="span12 table-responsive" id="uzers">
-                            <table border="0px" class="table" style="font-size:12px;">
+                            <table border="0px" class="table">
                                 <?php
-                                $sql="SELECT * FROM upload";
-                                $result_set=mysqli_query($mysqli,$sql);
-                                //..................................... getting the user's firstname and surname below......
-                                $searchuser="SELECT firstname,surname FROM user WHERE username='$username'";
-                                $user_result=mysqli_query($mysqli,$searchuser);                                    
-                                while ( $db_field = $user_result->fetch_assoc() ) {
-                                    $firstname = $db_field['firstname'];
-                                    $surname = $db_field['surname'];
-                                }
-                                //..................................... THE CODE ENDS HERE .................................
-                                while($row=mysqli_fetch_array($result_set))
-                                {
+                                if (isset($_GET['id'])){
+                                    $id = $_GET['id'];
+                                    $sql="SELECT * FROM upload WHERE id=$id";
+                                    $result_set=mysqli_query($mysqli,$sql);
+
+                                    //..................................... getting the user's firstname and surname below......
+                                    $searchuser="SELECT firstname,surname FROM user WHERE username='$username'";
+                                    $user_result=mysqli_query($mysqli,$searchuser);                                    
+                                    while ( $db_field = $user_result->fetch_assoc() ) {
+                                        $firstname = $db_field['firstname'];
+                                        $surname = $db_field['surname'];
+                                    }
+                                    //..................................... THE CODE ENDS HERE .................................                
+                                    while($row=mysqli_fetch_array($result_set))
+                                    {
                                 ?>
                                 <tbody class="list">
                                     <tr>
                                         <td class="cat">
                                             <img src="resources/user-avatar.png" width="60px" height="60px"><br>
-        <span style="font-size:12px;"><?php echo $row['upload_by']; ?></span><br><span style="font-size:9px;"><?php echo $row['upload_date'];?></span>   
+                                                <span style="font-size:12px;"><?php echo $row['upload_by']; ?></span><br>
+                                                <span style="font-size:9px;"><?php echo $row['upload_date'];?></span>   
                                         </td>
-                                        <td>
-                                            <table border="1px" class="table">
-                                                <tr>
-                                                    <td>File:</td>
-                                                    <td>
-                                                        <?php $actualname = substr_replace($row['file'],"",0,6); echo $actualname;?><span style="font-size:10px;"> ( <?php echo $row['upload_category'];?> )</span>                                                
-                                                        <div class="pull-right">
-<a title="Download file" style="font-size:12px;border-radius:45px;" href="download.php?id=<?php echo $row['id'];?>">
-                                                                <i class="glyphicon glyphicon-download-alt"></i>                                            
-</a>
-<a title="View File" style="font-size:12px;border-radius:45px;" href="uploads/<?php echo $row['file'];?>" target="_blank">
-    <i class="glyphicon glyphicon-chevron-right"></i>
-</a>
-                                                        </div>
-                                                    </td> 
-                                                </tr>
-                                                <tr>
-                                                    <td>Description:</td>
-                                                    <td>
-                <?php echo "<b>Type:</b>  ".$row['type'] ." <b>- Size :</b> ".$row['size']."kb"." <b>- upload by:</b> ".$firstname." ".$surname;?>
-                                                    </td>   
-                                                </tr>
-                                                <tr>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                    <div class="pull-right">
-<a title="View File" style="font-size:12px;border-radius:45px;" href="uploads/<?php echo $row['file'];?>" target="_blank" class="btn btn-default">view</a>
-<a title="Download file" style="font-size:12px;border-radius:45px;" href="download.php?id=<?php echo $row['id'];?>" class="btn btn-default">download</a>    
-                                                    </div>
-                                                    </td>   
-                                                </tr>
-                                            </table>
+                                        <td class="title">
+                                            <p>&nbsp;</p>
+                                            <p class="fontsforweb_fontid_494" style="color:#525C65;font-weight:bold;font-size:30px;margin-left:8px;">
+                                                <?php echo $row['file'];?><span style="font-size:16px;"> ( <?php echo $row['upload_category'];?> )</span>
+                                            </p>
                                         </td>
                                     </tr>
                                     <?php
-                                }  ?>
-                                </tbody>
+                                    }  ?>
+                                </tbody><?php
+                                }else{
+                                    echo "<b>Post not available: SORRY :(</b>";
+                                } ?>                              
                             </table>
                             <script src="bower_components/list.js/dist/list.min.js"></script>
                             <script>
@@ -182,9 +162,9 @@ include('dbconfig.php');
                             <tbody class="list">
                                 <tr>
                                     <td class="linktitle">
-                                        <p style="color:#03A89E;font-size:12px;margin-left:-2px;">
+                                        <p class="" style="color:#03A89E;font-size:12px;margin-left:-2px;">
                                             <a href="explodelibrary.php?id=<?php echo $row2['id'];?>">
-<?php $actualname = substr_replace($row2['file'],"",0,6); echo $actualname;?><span style="font-size:12px;"> - <?php echo $row2['upload_category'];?></span>
+                                                <?php $actualname = substr_replace($row2['file'],"",0,6); echo $actualname;?><span style="font-size:12px;"> - <?php echo $row2['upload_category'];?></span>
                                             </a>    
                                         </p> 
 

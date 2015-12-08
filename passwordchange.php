@@ -15,16 +15,16 @@ if (!isset($username)){
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <link href="bower_components/strength-meter/css/strength-meter.min.css" media="all" rel="stylesheet" type="text/css" />
+        <link href='resources/strength/src/strength.css' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="resources/style.css">
         <link rel="stylesheet" href="resources/font-awesome.css">
-        <link href='PRINC/font.css' rel='stylesheet' type='text/css'>
+        <link href='resources/PRINC/font.css' rel='stylesheet' type='text/css'>
         <!--...............................This is the DATATABLE.js SECTION LIBRARY IMPORTATION..................-->
         <link rel="stylesheet" type="text/css" href="DataTables-1.10.7/media/css/jquery.dataTables.css">
         <script type="text/javascript" charset="utf8" src="DataTables-1.10.7/media/js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="resources/customjs.js"></script>
         <link rel="stylesheet" type="text/css" href="resources/login.css">
-        <script src="bower_components/strength-meter/js/strength-meter.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="resources/strength/src/strength.min.js"></script>
     </head>
     <body>
         <div class="container" style="margin-top:70px;">
@@ -98,27 +98,47 @@ if (!isset($username)){
                                             <td>New Password:&nbsp;&nbsp;</td>
                                             <td>
                                     <input id="password1" type="password" class="strength" data-toggle-title="Display Password" required name="pwd1">
-                                           </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size:6px;color:transparent;">clear text here</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td>Confirm Password:&nbsp;&nbsp;</td>
-                                            <td><input id="password2" type="password" class="strength" data-toggle-title="Display Password" required name="pwd2"></td>
+                                            <td>
+                                    <input id="password2" type="password" class="strength" data-toggle-title="Display Password" required name="pwd2">
+                                            </td>
                                         </tr>
                                         <tr>
+                                            <td style="font-size:6px;color:transparent;">clear text here</td>
                                             <td></td>
-                                            <td><center><button type="submit" name="btnUpdate" class="btn btn-primary">Set New Password</button></center></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <center>
+                                                    <button type="submit" name="btnUpdate" class="btn btn-primary btn-block">Set New Password</button>
+                                                </center>
+                                            </td>
                                         </tr>
                                     </table>
                                 </form>
+                                <script type="text/javascript">
+                                    $('#password1').strength();
+                                </script>
                             </center>  
                         </div>
                         <div class="container">
                             <div class="logobar">
                                 <center>
-                                    <img src="resources/logobig.png">
+                                   <!-- <img src="resources/logobig.png">-->
                                 </center> 
                             </div>
                         </div>
-                    </div></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -41,12 +41,14 @@ include('dbconfig.php');
                                 <li><a href="newproject.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Project</a></li>
                             </ul>
                         </li>
+                        <?php if($rrol =='Admin') { ?>
                         <li class="active"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Users <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href="viewusers.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;System Users</a></li>
                                 <li><a href="newuser.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add User</a></li>
                             </ul>
                         </li> 
+                        <?php }?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -85,7 +87,7 @@ include('dbconfig.php');
             $conpass ='';
             if (isset($_POST["btnCreate"])){
 
-                $user=$_SESSION['sess'];
+                $user=$_SESSION['user'];
                 $fname = trim($_POST['firstname']);
                 $sname = trim($_POST['lastname']);
                 $proj = trim($_POST['project']);
@@ -180,7 +182,7 @@ $sql="INSERT INTO user (firstname,surname,username,password,role,project,created
                                     </tr>
                                     <tr>
                                         <td>Created by</td>
-                                        <td><input type="text" class="form-control" name="creator" value="<?php if (isset($_SESSION['sess'])){echo $_SESSION['sess'];}else{echo "Empty";}?>" readonly></td>
+                                        <td><input type="text" class="form-control" name="creator" value="<?php if (isset($_SESSION['user'])){echo $_SESSION['user'];}else{echo "Empty";}?>" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Status</td>

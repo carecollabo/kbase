@@ -55,12 +55,14 @@ if (!isset($username)){
                                 <li><a href="newproject.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add Project</a></li>
                             </ul>
                         </li>
+                        <?php if($rrol =='Admin') { ?>
                         <li class="active"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Users <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;System Users</a></li>
                                 <li><a href="newuser.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Add User</a></li>
                             </ul>
-                        </li> 
+                        </li>
+                        <?php }?> 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
