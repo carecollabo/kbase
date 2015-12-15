@@ -38,12 +38,17 @@ include('dbconfig.php');
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navibar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" href="#">CARE International</a>
                 </div>
-                <div>
+                <div class="collapse navbar-collapse" id="Navibar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="library.php">Library</a></li>
@@ -154,7 +159,7 @@ include('dbconfig.php');
                     <div class="col-sm-2" id="links" style="background-color:#F8F8F8;border-radius:9px;">
                        <table>
                         <div style="float:right; margin-bottom:2px;">
-                            <input class="search form-control" placeholder="Quick Search"/>
+                            <input class="search form-control" placeholder="Quick Search" id="search"/>
                         </div><br><br><br>
                         <?php
                         $sql2="SELECT * FROM post";
@@ -181,13 +186,10 @@ include('dbconfig.php');
                         }  ?>
                         </tbody>
                         </table>
-                    <script src="bower_components/list.js/dist/list.min.js"></script>
-                    <script>
-                        var options = {
-                            valueNames: [ 'linktitle','titleby']
-                        };
-                        var userList = new List('links', options);
-                    </script>
+                        <script type="text/javascript" src="resources/quicksearch/jquery.quicksearch.js"></script>
+                        <script type="text/javascript">
+                            $('input#search').quicksearch('table tbody tr');
+                        </script>
                     </div>
                 </div>
             </div>

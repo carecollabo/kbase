@@ -8,6 +8,16 @@ session_start();
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script>
+
+            $(document).ready(function() {
+                function disableBack() { window.history.forward() }
+
+                window.onload = disableBack();
+                window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+            });
+
+        </script>
     </head>
     <body>
         <form method="post">

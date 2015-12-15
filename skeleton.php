@@ -6,9 +6,14 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navibar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" href="#">CARE International</a>
                     <!-- 
                         <a class="navbar-brand" href="#">
@@ -16,7 +21,7 @@
                         </a
                     -->
                 </div>
-                <div>
+                <div class="collapse navbar-collapse" id="Navibar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.php">Home</a></li>
                         <li><a href="library.php">Library</a></li>

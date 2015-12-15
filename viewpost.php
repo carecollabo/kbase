@@ -38,12 +38,17 @@ include('dbconfig.php');
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navibar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" href="#">CARE International</a>
                 </div>
-                <div>
+                <div class="collapse navbar-collapse" id="Navibar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="library.php">Library</a></li>
@@ -123,9 +128,14 @@ include('dbconfig.php');
                                     <td class="cat">
                                         <?php 
                                             $str = $row['content']; 
-                                            $arr = explode(" ", str_replace(",", ", ", $str));
-                                            for ($index = 0; $index < 15; $index++) {
-                                                echo $arr[$index]. " ";
+                                            $mavara = count(explode(" ",$str));
+                                            if($mavara<=15){
+                                                echo $str;
+                                            }else{
+                                                $arr = explode(" ", str_replace(",", ", ", $str));
+                                                for ($index = 0; $index < 15; $index++) {
+                                                    echo $arr[$index]. " ";
+                                                }    
                                             }
                                     echo '<a title="View Post" href="explodepost.php?id='.$row['id'].'"> <b>....</b></a>';
                                         ?>                                        

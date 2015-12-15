@@ -45,5 +45,20 @@
                 </td>
             </tr>
         </table>
+        <?php 
+            $str = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare luctus diam sit amet mollis.';
+            $arr = explode(" ", str_replace(",", ", ", $str));
+            for ($index = 0; $index < 7; $index++) {
+                echo $arr[$index]. " ";
+            }
+            
+            echo $str;
+            $what = count(explode(" ",$str));
+        if($what<10){
+            echo $what;
+        }else{
+            echo "Onez";
+        }            
+        ?>
     </body>
 </html>
