@@ -84,7 +84,7 @@ include('dbconfig.php');
             </div>
         </nav>
         <div class="container">  
-            <div class="container" style="margin-top:10px;">
+            <div class="container" style="margin-top:70px;">
                 <p class="fontsforweb_fontid_494">Edit <strong>User</strong></p><!--..............IT'S A BEAUTIFUL HEADER .......-->
                 <hr style="margin-top:-11px;margin-left:-1%;margin-right:2%;">          
             </div>

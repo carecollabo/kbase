@@ -118,16 +118,18 @@ include('dbconfig.php');
                                 {
                                 ?>
                                 <tbody class="list">
-                                <tr>
+                                    <tr>
+                                        <td></td><!-- 
                                     <td class="cat">
-                                        <img src="resources/user-avatar.png" width="60px" height="60px">&nbsp;
-                                        <center>
-                <span style="font-size:12px;"><?php echo $row['post_by']; ?></span><br><span style="font-size:9px;"><?php echo $row['post_date'];?></span>
+                                        <!-- <img src="resources/user-avatar.png" width="60px" height="60px">
+                                        <center>  <span class="glyphicon glyphicon-user"></span>&nbsp;
+                                        
+                <span style="font-size:12px;"><?php echo $row['post_by']; ?></span><br><!-- <span style="font-size:9px;"><?php echo $row['post_date'];?></span>
                                         </center>
-                                    </td>
+                                </td>-->
                                     <td class="title">
                                        <p>&nbsp;</p>
-                                        <p class="fontsforweb_fontid_494" style="color:#525C65;font-weight:bold;font-size:25px;margin-left:8px;">
+                                        <p class="fontsforweb_fontid_494" style="color:#525C65;font-weight:bold;font-size:23px;margin-left:8px;">
                                             <?php echo $row['title'];?><span style="font-size:16px;"> ( <?php echo $row['post_category'];?> )</span>
                                         </p>
                                     </td>
@@ -138,7 +140,7 @@ include('dbconfig.php');
                                     </td>
                                     <td class="content">
                                         <p style="margin-left:8px;text-align:justify;margin-right:8px;font-size:12px;">
-                                            <?php echo $row['content']; ?>.....<b>by <?php echo $firstname." ".$surname;?></b>  
+                                            <?php echo $row['content']; ?>.....<b>by <?php echo $firstname." ".$surname." - Date: ".$row['post_date']."";?></b>  
                                        </p>
                                     </td>
                                 </tr>
@@ -194,6 +196,9 @@ include('dbconfig.php');
                 </div>
             </div>
         </div>
+<footer>
+        
+</footer>
     </body>
 </html>
 
