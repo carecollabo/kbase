@@ -13,6 +13,7 @@ if (!isset($username)){
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link rel='shortcut icon' type='image/x-icon' href='resources/favicon.ico' />
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-toP navbar-inverse">
@@ -69,5 +70,35 @@ if (!isset($username)){
                 </div>
             </div>
         </nav>
+<!--*****************************************CENTRAL BIG LOGO HERE*******************************-->
+        <div style="margin-top:90px;">
+            <center>
+                <img src="resources/carelogo.png" style="color:black;">
+            </center>
+        </div>
+<!-- ******************************************SEARCH TABLE FEATURE******************************-->
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div style="background-color:#F59C00;margin-top:40px" class="col-sm-6">
+                <center>
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="#" class="btn-block">
+                                    <span class="glyphicon glyphicon-search" style="color:#ff9900;"></span>
+                                </a>
+                            </td>
+                            <td colspan="5"><input class="form-control" size="120px" placeholder="Search" type="text"></td>
+                            <td>&nbsp;</td>
+                            <td><a href="#" class="btn-block"><center>
+                                <span class="glyphicon glyphicon-search" style="color:#000000;"></span></center>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
     </body>
 </html>                                                  
